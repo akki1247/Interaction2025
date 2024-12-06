@@ -1,0 +1,29 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["mongodb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL") // Replace with your MongoDB connection string
+}
+
+model Register {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  mobile  String   @unique
+  email   String   @unique
+  roll_no String   @unique
+  college String
+  section String
+  event   String[]
+  amount  String
+  date    DateTime @default(now())
+  status  String
+}
+
+
+        
+        
