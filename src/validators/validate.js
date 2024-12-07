@@ -1,19 +1,20 @@
 const { z } = require('zod')
 
 const studentEventSchema = z.object({
-  id: z.string().optional(), 
-  name: z.string(),
-  mobile: z.string().min(10, ' at least 10 digits').max(10, 'up to 10 digits'),
-  email: z.string().email('Invalid email address'),
-  college: z.string(),
-  section: z.string(),
-  event: z.record(z.array(z.string())), 
-  amount: z.string(),
-  country:z.string(),
-  state:z.string(),
-  image: z.string(),
-  date: z.date().default(() => new Date()),
-  status: z.string(),
+  Id: z.string().optional(), 
+  Name: z.string(),
+  Mobile: z.string().min(10, ' at least 10 digits').max(10, 'up to 10 digits'),
+  Email: z.string().email('Invalid email address'),
+  College: z.string(),
+  Section: z.string(),
+  Day1 :z.string(),
+  Day2 :z.string(),
+  Amount: z.string(),
+  Country:z.string(),
+  State:z.string(),
+  Image: z.string(),
+  Date: z.date().default(() => new Date()),
+  Status: z.string(),
 });
 
 module.exports = studentEventSchema 
