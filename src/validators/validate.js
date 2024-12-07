@@ -1,26 +1,19 @@
 const { z } = require('zod')
 
 const studentEventSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
+  id: z.string().optional(), 
+  name: z.string(),
+  mobile: z.string().min(10, ' at least 10 digits').max(10, 'up to 10 digits'),
+  email: z.string().email('Invalid email address'),
+  college: z.string(),
+  section: z.string(),
+  event: z.record(z.array(z.string())), 
+  amount: z.string(),
+  country:z.string(),
+  state:z.string(),
+  image: z.string(),
+  date: z.date().default(() => new Date()),
+  status: z.string(),
+});
 
-  mobile: z
-    .string()
-    .length(10, 'Mobile number must be exactly 10 digits') // Ensures length is exactly 10
-    .regex(/^\d{10}$/, 'Mobile number must contain only digits'),
-  email: z.string().email('Invalid email format'),
-  // Removes leading and trailing spaces
-  roll_no: z.string().min(1, 'Roll number is required'),
-
-  college: z.string().min(1, 'College name is required'),
-
-  section: z.string().min(1, 'Section is required'),
-
-  event: z.array(z.string()).min(1, 'At least one event is required'), // Ensures there's at least one event
-  amount: z.number()
-  .min(1, 'Amount must be a positive number greater than or equal to 1') // Ensures the number is at least 1
-  .refine(value => Number.isFinite(value) && value > 0, {
-    message: 'Amount must be a positive float'}),// Custom error message
-  status: z.string()
-})
-
-module.exports = studentEventSchema
+module.exports = studentEventSchema 
