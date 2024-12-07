@@ -15,7 +15,8 @@ model Register {
   Email   String   @unique
   College String
   Section String
-  Event   Json
+  Day1    String
+  Day2    String
   Amount  String
   Country String
   State   String
